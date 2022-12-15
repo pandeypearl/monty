@@ -27,6 +27,7 @@
 #define ERR_MOD_USG		210
 #define ERR_PCH_USG		211
 #define ERR_PCH_EMP		212
+#define  _POSIX_C_SOURCE 200809L
 
 extern int fd;
 int fd;
@@ -34,6 +35,7 @@ int fd;
 #include <ctype.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#define  _GNU_SOURCE
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -68,14 +70,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-typedef void (*opcode_p)(stack_t **stack, unsigned int line_number);
-
 extern stack_t *head;
-int read_monty(char *file);
-int proc_monty(void);
-int proc_lines(stack_t **, char (*)[1024], ssize_t, int *, int *);
-opcode_p check_f(char *tkn, int *s, stack_t *stack, unsigned int count);
-opcode_p check_stk_queue(char *tkn, int *s);
+
 void check_args_num(int argn);
 FILE *open_file(char *filename);
 void check_access_rights(char *filename);
@@ -108,10 +104,5 @@ void rotr(stack_t **stack, unsigned int line_number);
 
 void free_stack(stack_t *head);
 void _reverse(stack_t **stack, unsigned int line_number);
-
-int _strcmp(char *s1, char *s2);
-char *_strncpy(char *dest, char *src, int n);
-int _isdigit(char c);
-int _isnumber(char *num)
 
 #endif
