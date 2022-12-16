@@ -13,7 +13,6 @@ void frees_stack(void)
 	if (head)
 	{
 		temp = head;
-
 		while (temp)
 		{
 			head = head->next;

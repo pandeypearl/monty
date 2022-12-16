@@ -29,9 +29,6 @@
 #define ERR_PCH_EMP		212
 #define  _POSIX_C_SOURCE 200809L
 
-extern int fd;
-int fd;
-
 #include <ctype.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -71,13 +68,14 @@ typedef struct instruction_s
 } instruction_t;
 
 extern stack_t *head;
+stack_t *head;
 
 void check_args_num(int argn);
 FILE *open_file(char *filename);
 void check_access_rights(char *filename);
 int check_push_param(char *param);
 int check_digits(char *s);
-void frees_stack(void);
+void frees_stack();
 int handle_execution(char *op_code, char *op_param, unsigned int line, int m);
 void handle_error(int errno, char *opcode, unsigned int line, char *buff);
 void handle_cerror(int errno, char *opcode, unsigned int line);
@@ -101,8 +99,5 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
-
-void free_stack(stack_t *head);
-void _reverse(stack_t **stack, unsigned int line_number);
 
 #endif
